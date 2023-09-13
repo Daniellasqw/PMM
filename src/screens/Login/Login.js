@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useState,useContext} from 'react';
 import {Platform } from 'react-native'
 import { 
     Background,
@@ -10,13 +10,21 @@ import {
     SubmitText,
     Link, 
     LinkText 
-} from './styles'
+} from './styles';
+import { AuthContext } from '../../contexts/context';
 
 import {useNavigation} from '@react-navigation/native';
 
 
 export default function Login() {
+    const {login}= useContext(AuthContext);
     const navigation = useNavigation();
+    const [email,setEmail]= useState('');
+    const [password,setPassword]= useState('')
+
+    function hendeLogin(){
+        login(email,password);
+    }
 
     return (
         <Background>
@@ -32,6 +40,8 @@ export default function Login() {
                     <Input
                         placeholder="Seu Email"
                         placeholderTextColor="grey"
+                        value={email}
+                        onChangeText={(value) => setEmail(value)}
                     />
 
                 </AreaInput>
@@ -39,10 +49,12 @@ export default function Login() {
                     <Input
                         placeholder="Sua Senha"
                         placeholderTextColor="grey"
+                        value={password}
+                        onChangeText={(value) => setPassword(value)}
                     />
 
                 </AreaInput>
-                <SubmitButton activeOpacity={0.8}>
+                <SubmitButton activeOpacity={0.8} onPress={hendeLogin}>
                     <SubmitText>
                         Acessar
                     </SubmitText>

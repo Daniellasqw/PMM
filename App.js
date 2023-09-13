@@ -1,5 +1,5 @@
 
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Router from './src/routes/router';
-import AuthProvider from './src/screens/contexts/context';
+import AuthProvider from './src/contexts/context';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
