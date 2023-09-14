@@ -1,36 +1,36 @@
-import React,{useState,useContext} from 'react';
-import {Platform } from 'react-native'
-import { 
+import React, { useState, useContext } from 'react';
+import { Platform, ActivityIndicator } from 'react-native'
+import {
     Background,
-    Container, 
-    Logo, 
-    AreaInput, 
-    Input, 
-    SubmitButton, 
+    Container,
+    Logo,
+    AreaInput,
+    Input,
+    SubmitButton,
     SubmitText,
-    Link, 
-    LinkText 
+    Link,
+    LinkText
 } from './styles';
 import { AuthContext } from '../../contexts/context';
 
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Login() {
-    const {login}= useContext(AuthContext);
+    const { login, loadingAuth } = useContext(AuthContext);
     const navigation = useNavigation();
-    const [email,setEmail]= useState('');
-    const [password,setPassword]= useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
 
-    function hendeLogin(){
-        login(email,password);
+    function hendeLogin() {
+        login(email, password);
     }
 
     return (
         <Background>
             <Container
-            behavior={Platform.OS === 'ios'?'padding':''}
-            enabled
+                behavior={Platform.OS === 'ios' ? 'padding' : ''}
+                enabled
             >
                 <Logo
                     source={require('../../assets/Logo.png')}
@@ -55,12 +55,17 @@ export default function Login() {
 
                 </AreaInput>
                 <SubmitButton activeOpacity={0.8} onPress={hendeLogin}>
-                    <SubmitText>
-                        Acessar
-                    </SubmitText>
+                    {
+                        loadingAuth ? (
+                            <ActivityIndicator size={20} color='#fff' />
+                        ) : (
+                            <SubmitText> Acessar </SubmitText>
+                        )
+                    }
+
                 </SubmitButton>
 
-                <Link onPress={()=>navigation.navigate('Register')}>
+                <Link onPress={() => navigation.navigate('Register')}>
                     <LinkText >
                         Criar uma Conta!
                     </LinkText>

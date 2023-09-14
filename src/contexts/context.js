@@ -75,9 +75,15 @@ function AuthProvider({ children }) {
           token:dados.token,
           email:email
         }
+        setUser({
+          id: dados.id,
+          name: dados.name,
+          email: dados.email,
+          token:dados.token
+        })
       }
 
-      setLoadingAuth(false)
+    setLoadingAuth(false)
      
 
     }
