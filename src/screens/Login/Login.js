@@ -16,6 +16,7 @@ import { AuthContext } from '../../contexts/context';
 import { useNavigation } from '@react-navigation/native';
 
 
+
 export default function Login() {
     const { login, loadingAuth } = useContext(AuthContext);
     const navigation = useNavigation();
