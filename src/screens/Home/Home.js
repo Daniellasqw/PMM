@@ -5,6 +5,7 @@ import { Background,ListBalance } from './styles';
 import Header from '../components/Header/Header';
 import { format } from 'date-fns';
 import { useIsFocused } from '@react-navigation/native';
+import BalanceItem from '../components/BalanceItem/BalanceItem';
 
 
 export default function Home() {
@@ -50,9 +51,7 @@ export default function Home() {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             keyExtractor={item=>item.tag}
-            renderItem={({item})=>{
-                
-            }}
+            renderItem={({item})=>(<BalanceItem/>  )}
             />
         </Background>
     )
