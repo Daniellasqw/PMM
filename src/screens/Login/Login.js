@@ -52,6 +52,7 @@ export default function Login() {
                         placeholderTextColor="grey"
                         value={password}
                         onChangeText={(value) => setPassword(value)}
+                        secureTextEntry={true}
                     />
 
                 </AreaInput>

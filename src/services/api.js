@@ -6,5 +6,7 @@ const api = axios.create({
 
 })
 
+const server = 'http://192.168.1.4:3333'
 
-export default api;
+
+export  {server};
